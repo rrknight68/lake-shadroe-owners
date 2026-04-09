@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lake Shadroe — Pricing & Market Context</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D2B4E;--gold:#C89A3A;--cream:#F9F7F3;--deep:#071B33;--gray:#8B8680;--white:#FEFDFB;--red:#C44D4D;--green:#3A7D5C;--muted:#B8B2A8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lora',Georgia,serif;background:var(--cream);color:var(--navy)}
+.hero{background:var(--navy);color:var(--cream);padding:50px 40px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(200,154,58,.12) 0%,transparent 60%)}
+.eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;position:relative}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,4vw,40px);line-height:1.2;max-width:700px;margin:0 auto 12px;position:relative}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:14px;color:var(--muted);max-width:600px;margin:0 auto;line-height:1.7;position:relative}
+.section{max-width:900px;margin:0 auto;padding:40px 28px 0}
+.section h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;text-align:center;margin-bottom:8px}
+.sub-label{text-align:center;font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:24px}
+.gold-line{width:40px;height:1px;background:var(--gold);margin:30px auto}
+
+/* Callout box */
+.callout{max-width:900px;margin:0 auto;padding:30px 28px}
+.callout-box{background:var(--deep);color:var(--cream);border-radius:10px;padding:32px 28px;position:relative;overflow:hidden}
+.callout-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,154,58,.06) 0%,transparent 60%)}
+.callout-box p{font-size:14px;color:var(--muted);line-height:1.8;position:relative;max-width:700px;margin:0 auto}
+.callout-box strong{color:var(--gold)}
+.callout-box .eyebrow{margin-bottom:12px}
+
+/* Comp table */
+.comp-table-wrap{background:var(--white);border:1px solid #E8E4DE;border-radius:8px;overflow:hidden;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--navy);color:var(--cream)}
+th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:12px 14px;text-align:left;font-weight:500}
+th:nth-child(n+3){text-align:right}
+td{padding:10px 14px;border-bottom:1px solid #EDEAE6}
+td:nth-child(n+3){text-align:right;font-family:'DM Mono',monospace;font-size:12px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(200,154,58,.04)}
+.highlight{color:var(--green);font-weight:600}
+.dim{color:var(--gray);font-style:italic}
+.table-note{font-size:11px;color:var(--gray);font-style:italic;padding:12px 14px;border-top:1px solid #EDEAE6}
+
+/* Summary row */
+.summary-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:24px 0;text-align:center}
+.summary-card{background:var(--navy);border-radius:8px;padding:20px 24px;min-width:160px}
+.summary-num{font-family:'DM Mono',monospace;font-size:24px;color:var(--gold);font-weight:500}
+.summary-label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.summary-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* Prose */
+.prose{max-width:800px;margin:0 auto;padding:20px 28px 30px}
+.prose h3{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:24px 0 8px}
+.prose h3:first-of-type{margin-top:0}
+.prose p{font-size:13px;line-height:1.8;color:#4A4640;margin-bottom:10px}
+.prose .stat{font-family:'DM Mono',monospace;color:var(--navy);font-weight:500}
+
+/* Pricing ladder */
+.ladder{max-width:900px;margin:0 auto;padding:0 28px 30px}
+.ladder-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center}
+@media(max-width:768px){.ladder-grid{grid-template-columns:repeat(4,1fr)}}
+.ladder-item{background:var(--white);border:1px solid #E8E4DE;border-radius:6px;padding:14px 8px}
+.ladder-floor{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+.ladder-psf{font-family:'DM Mono',monospace;font-size:16px;color:var(--navy);font-weight:500}
+.ladder-range{font-size:10px;color:var(--gray);margin-top:2px}
+.ladder-item.launch{border-color:var(--gold);background:rgba(200,154,58,.04)}
+.ladder-item.launch .ladder-floor{color:var(--gold)}
+
+.footer{background:var(--navy);padding:20px;text-align:center;margin-top:40px}
+.footer-brand{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.footer-legal{font-size:8px;color:rgba(200,200,200,.3);line-height:1.5;max-width:600px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="eyebrow">Lake Shadroe Resort & Marina · Pricing & Market Context</div>
+  <h1>Why There Are <em>No Comps</em> in Cape Coral</h1>
+  <p class="hero-sub">Lake Shadroe is the first new-build condo-hotel in Cape Coral. There is no comparable product in this submarket. The independent appraisal had to pull comps from Sarasota, Naples, and Bonita Springs — and adjusted them down for Cape Coral's location.</p>
+</section>
+
+<!-- Key Insight -->
+<section class="callout">
+  <div class="callout-box">
+    <div class="eyebrow">Understanding the Appraisal</div>
+    <p>BBG's independent MAI appraisal valued completed Lake Shadroe units at <strong>$1,565/SF (2BR)</strong> and <strong>$1,770/SF (3BR)</strong>. These figures are not what Cape Coral resales trade at — they represent what <strong>this product class</strong> trades at across Southwest Florida, after BBG applied <strong>negative 2.5%–5% location adjustments</strong> to every comparable because Sarasota and Naples are considered superior locations. Even after those downward adjustments, the appraised values significantly exceed our launch pricing of <strong>$975–$1,025/SF</strong>.</p>
+  </div>
+</section>
+
+<!-- Summary metrics -->
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="summary-num">$975/SF</div>
+    <div class="summary-label">Launch Pricing</div>
+    <div class="summary-sub">Floors 1–2</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-num">$1,150/SF</div>
+    <div class="summary-label">Blended All 48</div>
+    <div class="summary-sub">Tiered by floor</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-num">$1,246/SF</div>
+    <div class="summary-label">SWFL Comp Avg</div>
+    <div class="summary-sub">5 verified sales</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-num">$1,565–$1,770</div>
+    <div class="summary-label">BBG Appraised</div>
+    <div class="summary-sub">MAI · March 2026</div>
+  </div>
+</div>
+
+<!-- SWFL Market Comps -->
+<section class="section">
+  <h2>Southwest Florida New Construction Comps</h2>
+  <div class="sub-label">Luxury waterfront · New or recent construction · All verified transactions</div>
+  <div class="comp-table-wrap">
+    <table>
+      <thead><tr><th>Property</th><th>Location</th><th>Type</th><th>SF</th><th>$/SF</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Ritz-Carlton Residences Estero Bay</td><td>Bonita Springs</td><td>Residential Condo</td><td>3,300</td><td>$1,450</td><td>Luxury waterfront</td></tr>
+        <tr><td>ONE Naples</td><td>Naples</td><td>Residential Condo</td><td>3,650</td><td>$1,380</td><td>High-rise waterfront</td></tr>
+        <tr><td>Prima Luce</td><td>Fort Myers</td><td>Mixed-Use</td><td>1,600</td><td>$1,150</td><td>Urban waterfront</td></tr>
+        <tr><td>The Driftwood</td><td>Fort Myers Beach</td><td>Residential Condo</td><td>1,800</td><td>$1,200</td><td>Beachfront</td></tr>
+        <tr><td>Cape Harbour Marina Village</td><td>Cape Coral</td><td>Mixed-Use</td><td>1,650</td><td>$1,050</td><td>Marina-front</td></tr>
+        <tr style="background:rgba(200,154,58,.06)"><td><strong>Lake Shadroe (launch)</strong></td><td><strong>Cape Coral</strong></td><td><strong>Condo-Hotel</strong></td><td><strong>1,125–1,350</strong></td><td class="highlight"><strong>$975</strong></td><td><strong>Resort · Marina · STR zoning</strong></td></tr>
+      </tbody>
+      <tfoot><tr><td colspan="6" class="table-note">Lake Shadroe is the only condo-hotel with commercial zoning, professional operator, and CLOMR→LOMR flood zone engineering. All other comps are residential condos with HOA-governed rental rights. Comparable average: $1,246/SF. Launch pricing represents a 22% discount to the comp average.</td></tr></tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- BBG Appraisal Comps -->
+<section class="section">
+  <h2>BBG Appraisal Comparable Sales</h2>
+  <div class="sub-label">BBG Inc. · Louis A. Yorey MAI MRICS · March 2026 · File #0126004901</div>
+  <div class="comp-table-wrap">
+    <table>
+      <thead><tr><th>Property</th><th>Location</th><th>SF</th><th>Raw $/SF</th><th>Adj $/SF</th><th>Key Adjustments</th></tr></thead>
+      <tbody>
+        <tr><td colspan="6" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:14px;background:rgba(200,154,58,.04)">B1 Unit (2BR · 1,125 SF) — Reconciled Value: $1,565/SF → $1,760,000</td></tr>
+        <tr><td>301 Quay Commons #1211</td><td>Sarasota</td><td>2,072</td><td>$1,204</td><td>$1,471</td><td class="dim">-2.5% location, +20% amenity, +3% age</td></tr>
+        <tr><td>1111 Central Ave #512</td><td>Naples</td><td>1,787</td><td>$1,189</td><td>$1,510</td><td class="dim">-5% location, +25% amenity, +4% age</td></tr>
+        <tr><td>1155 N Gulfstream #703</td><td>Sarasota</td><td>1,810</td><td>$1,041</td><td>$1,355</td><td class="dim">-2.5% location, +30% amenity, +1% age</td></tr>
+        <tr><td>550 Golden Gate Pt #503</td><td>Sarasota</td><td>2,272</td><td>$1,758</td><td>$1,670</td><td class="dim">-2.5% location, +10% amenity, 50% weight</td></tr>
+        <tr><td colspan="6" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:14px;background:rgba(200,154,58,.04)">C1 Unit (3BR · 1,350 SF) — Reconciled Value: $1,770/SF → $2,390,000</td></tr>
+        <tr><td>401 Quay Commons #1404</td><td>Sarasota</td><td>2,984</td><td>$1,475</td><td>$1,723</td><td class="dim">-5% location, +20% amenity, +3% age</td></tr>
+        <tr><td>1111 Central Ave #512</td><td>Naples</td><td>1,787</td><td>$1,189</td><td>$1,493</td><td class="dim">-5% location, +20% amenity, +4% age</td></tr>
+        <tr><td>1933 Davis Blvd #207</td><td>Naples</td><td>2,901</td><td>$1,896</td><td>$1,630</td><td class="dim">-5% location, +5% amenity, in escrow</td></tr>
+        <tr><td>1820 Gulf Shore Blvd #301</td><td>Naples</td><td>2,976</td><td>$2,008</td><td>$1,998</td><td class="dim">-5% location, +5% amenity, 35% weight</td></tr>
+      </tbody>
+      <tfoot><tr><td colspan="6" class="table-note">All BBG comps are residential condos — none have condo-hotel zoning, commercial STR entitlements, or integrated resort amenities. BBG applied negative location adjustments to every comp because Sarasota and Naples are considered superior submarkets. BBG also applied +20–30% amenity adjustments to reflect Lake Shadroe's marina, spa, restaurant, and permanent STR rights — features none of the comps offer.</td></tr></tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- Why no Cape Coral comps -->
+<section class="prose">
+  <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;text-align:center;margin-bottom:20px">Why the Comps Come From Outside Cape Coral</h2>
+
+  <h3>Zero New-Build Condo-Hotel Inventory in Cape Coral</h3>
+  <p>There is no new-construction condo-hotel product in Cape Coral. Period. The only comparable waterfront condo product is Cape Harbour Marina Village, which trades at <span class="stat">$1,050/SF</span> — but Cape Harbour is a residential condo with HOA-governed rental rights, no professional operator, and no resort amenities. It is not a condo-hotel. BBG correctly identified that the comparable set for Lake Shadroe must come from analogous product types in adjacent SWFL markets.</p>
+
+  <h3>BBG Adjusted Down for Location</h3>
+  <p>Every comp in the appraisal — Sarasota, Naples, Bonita Springs — received a <span class="stat">negative 2.5%–5% location adjustment</span> because BBG considers those submarkets superior to Cape Coral. This is built into the $1,565–$1,770 reconciled values. The appraisal is not saying Cape Coral commands Naples pricing — it's saying Lake Shadroe's product class commands this pricing even after discounting for Cape Coral's location.</p>
+
+  <h3>BBG Adjusted Up for Amenities and STR Rights</h3>
+  <p>BBG applied <span class="stat">+20–30% amenity adjustments</span> to comps because none of them offer what Lake Shadroe delivers: an integrated marina with boat slips, a Dalal wellness club, a waterfront restaurant, an infinity pool with beach, and — critically — commercially zoned nightly rental rights that no HOA or municipality can restrict. These are structural advantages that residential condo comps simply do not have.</p>
+
+  <h3>Launch Pricing Is Conservative to Both the Appraisal and the Market</h3>
+  <p>At <span class="stat">$975/SF launch pricing</span>, Lake Shadroe is priced 38% below the BBG appraisal, 22% below the SWFL new-construction comp average of $1,246/SF, and 7% below Cape Harbour at $1,050/SF — the closest Cape Coral comp, which is a materially inferior product. The blended sellout at ~$1,150/SF across all 48 units aligns almost exactly with the BBG as-complete value of $81.68M.</p>
+</section>
+
+<!-- Tiered pricing ladder -->
+<section class="section" style="padding-bottom:10px">
+  <h2>Tiered Pricing Strategy</h2>
+  <div class="sub-label">Floor premium ladder · Launch pricing on Floors 1–2 · Upper floors released in waves</div>
+</section>
+<section class="ladder">
+  <div class="ladder-grid">
+    <div class="ladder-item launch">
+      <div class="ladder-floor">Floor 1</div>
+      <div class="ladder-psf">$975–$1,025</div>
+      <div class="ladder-range">Launch</div>
+    </div>
+    <div class="ladder-item launch">
+      <div class="ladder-floor">Floor 2</div>
+      <div class="ladder-psf">$1,000–$1,050</div>
+      <div class="ladder-range">Launch</div>
+    </div>
+    <div class="ladder-item">
+      <div class="ladder-floor">Floor 3</div>
+      <div class="ladder-psf">$1,100–$1,150</div>
+      <div class="ladder-range">Wave 2</div>
+    </div>
+    <div class="ladder-item">
+      <div class="ladder-floor">Floor 4</div>
+      <div class="ladder-psf">$1,150–$1,200</div>
+      <div class="ladder-range">Wave 2</div>
+    </div>
+    <div class="ladder-item">
+      <div class="ladder-floor">Floor 5</div>
+      <div class="ladder-psf">$1,200–$1,250</div>
+      <div class="ladder-range">Wave 3</div>
+    </div>
+    <div class="ladder-item">
+      <div class="ladder-floor">Floor 6</div>
+      <div class="ladder-psf">$1,250–$1,300</div>
+      <div class="ladder-range">Wave 3</div>
+    </div>
+    <div class="ladder-item">
+      <div class="ladder-floor">Floor 7</div>
+      <div class="ladder-psf">$1,300–$1,400</div>
+      <div class="ladder-range">Penthouse</div>
+    </div>
+  </div>
+</section>
+
+<!-- P&L summary -->
+<section class="section">
+  <h2>Project Economics at Revised Pricing</h2>
+  <div class="sub-label">~$1,150/SF blended · Tiered by floor · Commercial unchanged</div>
+  <div class="comp-table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Residential Revenue (48 units)</td><td>$71,785,000</td><td>60,075 SF @ ~$1,195 blended</td></tr>
+        <tr><td>Commercial Revenue</td><td>$9,802,400</td><td>Dalal $5.88M + Restaurant $1.70M + Marina $2.22M</td></tr>
+        <tr><td><strong>Total Gross Revenue</strong></td><td><strong>$81,587,400</strong></td><td>Matches BBG as-complete ($81.68M)</td></tr>
+        <tr><td>Less: Commission & Closing (7%)</td><td>($5,711,118)</td><td>6% commission + 1% closing</td></tr>
+        <tr><td>Net Revenue</td><td>$75,876,282</td><td></td></tr>
+        <tr><td>Total Development Cost</td><td>$48,555,440</td><td>Per Project Budget SSOT</td></tr>
+        <tr><td><strong>Net Profit</strong></td><td class="highlight"><strong>$27,320,842</strong></td><td></td></tr>
+        <tr><td>Project Margin</td><td>33.5%</td><td>Net Profit / Gross Revenue</td></tr>
+        <tr><td>Profit on Cost</td><td class="highlight">56.3%</td><td>Net Profit / TDC</td></tr>
+        <tr><td>LTC (Senior $25M / TDC)</td><td>51.5%</td><td>Conservative basis for lender</td></tr>
+        <tr><td>LTV (Senior $25M / As-Complete $81.68M)</td><td>30.6%</td><td>Per BBG appraisal</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">Vantage Point Investments · Cape Coral, Florida</div>
+  <div class="footer-legal">This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security. BBG appraisal data from File #0126004901, March 18, 2026. Market comparable data based on publicly available transaction records. All projections subject to change. © 2026 Vantage Point Investments.</div>
+</footer>
+
+</body>
+</html>
