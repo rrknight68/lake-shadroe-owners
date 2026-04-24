@@ -88,6 +88,9 @@ table{max-width:100%;display:block;overflow-x:auto}
 .footer-brand{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .footer-legal{font-size:9px;color:rgba(200,200,200,.35);line-height:1.6;max-width:580px;margin:0 auto}
 
+/* Hero image — breathing room between hero section and first image */
+img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
+
 /* ─── Mobile optimizations ──────────────────────────────────────── */
 @media (max-width: 640px) {
   /* Body text bumped to 16px baseline to prevent iOS tap-to-zoom */
@@ -116,10 +119,36 @@ table{max-width:100%;display:block;overflow-x:auto}
   /* Fallback contact line — bumped up for legibility on phones */
   .cta-detail { font-size: 13px; line-height: 1.65; }
 
-  /* Stats row in the ins-callout — keep numbers prominent */
-  .ins-row { gap: 20px; }
+  /* Hero image — tighter breathing room on mobile */
+  img[src="images/hero-pool-deck-sunset.jpg"] { margin-top: 28px; }
+
+  /* Stats row in the ins-callout — keep numbers prominent + prevent label cutoff */
+  .ins-callout { padding: 20px 12px; }
+  .ins-row { gap: 12px; }
+  .ins-col { min-width: 0; flex: 1 1 0; }
   .ins-col-num { font-size: 26px; }
+  .ins-col-label, .ins-col-sub {
+    white-space: normal;
+    word-break: keep-all;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    line-height: 1.35;
+  }
   .ins-vs { display: none; }
+
+  /* Inline 3-col stat grid (Founder's Pricing / $44K NOI / 4.1% Cap Rate)
+     — stack to 1 column on narrow phones so the Cinzel labels stop clipping */
+  div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Inline 4-col PROOF STRIP (BBG / GMP / Protected / Reclassified)
+     — stack to 2 columns so labels get enough width to wrap instead of clip */
+  div[style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
 
   /* Tap targets — enforce ≥48px min-height on all CTAs (mailto anchors
      and .cta-btn class). Uses !important to override inline padding. */
@@ -146,7 +175,7 @@ table{max-width:100%;display:block;overflow-x:auto}
 <section class="hero">
   <div class="eyebrow">Roelens Vacations · Exclusive Owner Access</div>
   <h1>Own a Unit Where <em>Koen Invests</em></h1>
-  <p class="hero-sub">Lake Shadroe Resort &amp; Marina is Cape Coral's first purpose-built condo-hotel. Koen Roelens is investing his own capital. Six Founder's residences starting at $925/SF — pre-launch pricing. Available exclusively to existing Roelens owners before construction financing closes.</p>
+  <p class="hero-sub">Lake Shadroe Resort &amp; Marina is Cape Coral's first purpose-built condo-hotel. Koen Roelens is investing his own capital. Six Founder's residences starting at $925/SF — pre-launch pricing. Available exclusively to existing Roelens owners. Horizontal construction is nearly complete; we are transitioning to vertical construction.</p>
   <div style="text-align:center;margin-top:28px">
     <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;text-decoration:none;margin:0 8px">Email Koen</a>
     <div class="cta-detail" style="text-align:center">koen@roelensvacations.com &nbsp;·&nbsp; (239) 673-5112</div>
@@ -295,7 +324,7 @@ table{max-width:100%;display:block;overflow-x:auto}
 <!-- 8. SIX LAUNCH UNITS (LAST before CTA) -->
 <section class="units-section">
   <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:28px;text-align:center;margin-bottom:8px">Whole Ownership — Exclusive Priority Pricing</h2>
-  <div class="sub-label">Available only to Roelens Vacations owners · $25,000 refundable reservation deposit</div>
+  <div class="sub-label">Available only to Roelens Vacations owners · $25K refundable until vertical construction begins</div>
   <div class="unit-grid">
     <div class="unit-card">
       <div class="badge">Founder's Floor</div>
@@ -387,7 +416,7 @@ table{max-width:100%;display:block;overflow-x:auto}
     <div>
       <div style="border-bottom:1px solid #E8E4DE;padding:20px 0">
         <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;color:var(--navy);font-weight:600;margin-bottom:8px">Is my deposit refundable?</div>
-        <div style="font-size:14px;color:#5A6478;line-height:1.6">Yes. The $25,000 deposit is fully refundable until closing.</div>
+        <div style="font-size:14px;color:#5A6478;line-height:1.6">Yes. $25K refundable until vertical construction begins.</div>
       </div>
       <div style="border-bottom:1px solid #E8E4DE;padding:20px 0">
         <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:1px;color:var(--navy);font-weight:600;margin-bottom:8px">Can I use a 1031 exchange?</div>
@@ -404,7 +433,7 @@ table{max-width:100%;display:block;overflow-x:auto}
 <!-- 9. CTA -->
 <section class="cta">
   <h2>This Is an Exclusive Offer to Roelens Vacations Investors</h2>
-  <p>These six launch units and their priority pricing are available only to existing Roelens Vacations owners — the investors Koen trusts most. A $25,000 refundable reservation deposit secures your preferred unit. Once these six are reserved, launch pricing is closed permanently.</p>
+  <p>These six launch units and their priority pricing are available only to existing Roelens Vacations owners — the investors Koen trusts most. A $25K deposit — refundable until vertical construction begins — secures your preferred unit. Once these six are reserved, launch pricing is closed permanently.</p>
   <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
     <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;text-decoration:none">Email Koen</a>
   </div>
