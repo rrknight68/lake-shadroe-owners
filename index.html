@@ -91,6 +91,11 @@ table{max-width:100%;display:block;overflow-x:auto}
 /* Hero image — breathing room between hero section and first image */
 img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
 
+/* Hero tap safety — the ::before radial-gradient overlay must not intercept
+   taps on the Email Koen button, and CTAs should sit above any stacking. */
+.hero::before{pointer-events:none !important}
+.hero a[href^="mailto:"],.hero .cta-btn{position:relative;z-index:2}
+
 /* ─── Mobile optimizations ──────────────────────────────────────── */
 @media (max-width: 640px) {
   /* Body text bumped to 16px baseline to prevent iOS tap-to-zoom */
@@ -110,10 +115,43 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   .vexplain, .ins-bottom, .cta p { font-size: 15px; line-height: 1.7; }
   .ck span { font-size: 14px; line-height: 1.55; }
 
-  /* DM Mono numbers in unit rows — bumped from 13 → 14px */
-  .unit-row { font-size: 14px; padding: 10px 0; }
-  .unit-row .val { font-size: 14px; }
-  .unit-meta, .unit-psf { font-size: 13px; }
+  /* Unit cards — give rows room to breathe on mobile; use flex-shrink to
+     prevent label and number from overlapping when label text is long. */
+  .unit-card { padding: 20px 16px; }
+  .unit-card .badge {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+  }
+  .unit-card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .unit-meta, .unit-psf {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .unit-row {
+    font-size: 13px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .unit-row .label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .unit-row .val {
+    flex: 0 0 auto;
+    font-size: 13px;
+    white-space: nowrap;
+  }
   .unit-savings { font-size: 14px; line-height: 1.55; }
 
   /* Fallback contact line — bumped up for legibility on phones */
@@ -122,17 +160,37 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   /* Hero image — tighter breathing room on mobile */
   img[src="images/hero-pool-deck-sunset.jpg"] { margin-top: 28px; }
 
-  /* Stats row in the ins-callout — keep numbers prominent + prevent label cutoff */
-  .ins-callout { padding: 20px 12px; }
-  .ins-row { gap: 12px; }
-  .ins-col { min-width: 0; flex: 1 1 0; }
-  .ins-col-num { font-size: 26px; }
-  .ins-col-label, .ins-col-sub {
+  /* Insurance callout — stack columns vertically on mobile so labels + numbers
+     don't overlap at narrow viewports. Each col gets full width of the callout. */
+  .ins-callout { padding: 24px 16px; }
+  .ins-row {
+    gap: 14px !important;
+    flex-direction: column;
+  }
+  .ins-col {
+    width: 100% !important;
+    min-width: 0;
+    text-align: center;
+    padding: 12px 0;
+  }
+  .ins-col-num {
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .ins-col-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    display: block;
     white-space: normal;
-    word-break: keep-all;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    line-height: 1.35;
+  }
+  .ins-col-sub {
+    font-size: 11px;
+    line-height: 1.5;
+    display: block;
+    margin-top: 4px;
   }
   .ins-vs { display: none; }
 
