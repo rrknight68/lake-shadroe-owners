@@ -118,7 +118,14 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   /* Unit cards — give rows room to breathe on mobile; use flex-shrink to
      prevent label and number from overlapping when label text is long. */
   .unit-card { padding: 20px 16px; }
+  /* Mobile badge — pull out of absolute positioning so it never overlaps the
+     card title (longest label "Premium · Ceiling" was colliding with the h3). */
   .unit-card .badge {
+    position: static !important;
+    display: inline-block !important;
+    top: auto;
+    right: auto;
+    margin-bottom: 10px;
     font-size: 9px;
     letter-spacing: 1.5px;
     padding: 4px 10px;
@@ -461,7 +468,7 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
 <section style="background:var(--cream);padding:40px 20px;text-align:center">
   <div style="max-width:600px;margin:0 auto">
     <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:20px">Ready to discuss your options?</p>
-    <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--navy);padding:14px 32px;text-decoration:none;margin:0 8px">Email Koen</a>
+    <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);border:1px solid var(--navy);color:#FFFFFF;padding:14px 32px;text-decoration:none;margin:0 8px">Email Koen</a>
     <div class="cta-detail" style="text-align:center">koen@roelensvacations.com &nbsp;·&nbsp; (239) 673-5112</div>
   </div>
 </section>
