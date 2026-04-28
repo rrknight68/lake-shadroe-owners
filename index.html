@@ -92,7 +92,7 @@ table{max-width:100%;display:block;overflow-x:auto}
 img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
 
 /* Hero tap safety — the ::before radial-gradient overlay must not intercept
-   taps on the Email Koen button, and CTAs should sit above any stacking. */
+   taps on the Contact Koen button, and CTAs should sit above any stacking. */
 .hero::before{pointer-events:none !important}
 .hero a[href^="mailto:"],.hero .cta-btn{position:relative;z-index:2}
 
@@ -232,6 +232,29 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   .hero h1 { line-height: 1.2; }
   .section h2, .prose h2, .checks h2, .cta h2 { line-height: 1.2; font-size: 24px; }
 }
+/* ========== Contact Koen Modal ========== */
+.cm-overlay{position:fixed;inset:0;background:rgba(8,28,54,0.72);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:9999}
+.cm-overlay[aria-hidden="false"]{opacity:1;pointer-events:auto}
+.cm-card{position:relative;background:var(--cream);color:var(--navy);border-radius:8px;max-width:480px;width:100%;max-height:calc(100vh - 40px);overflow-y:auto;padding:34px 30px 26px;box-shadow:0 24px 60px rgba(0,0,0,0.4);border:1px solid var(--gold);transform:translateY(10px);transition:transform .2s ease}
+.cm-overlay[aria-hidden="false"] .cm-card{transform:translateY(0)}
+.cm-close{position:absolute;top:10px;right:12px;background:transparent;border:none;color:var(--gray);font-size:24px;cursor:pointer;line-height:1;padding:4px 10px;font-family:'Lora',Georgia,serif}
+.cm-close:hover{color:var(--navy)}
+.cm-header{text-align:center;padding-bottom:18px;border-bottom:1px solid rgba(13,43,78,0.12);margin-bottom:20px}
+.cm-eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+.cm-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--navy);margin-bottom:4px;line-height:1.15}
+.cm-subhead{font-family:'Lora',Georgia,serif;font-size:13px;color:var(--gray);font-style:italic}
+.cm-section{padding:14px 0;border-bottom:1px solid rgba(13,43,78,0.08)}
+.cm-section:last-child{border-bottom:none;padding-bottom:4px}
+.cm-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.cm-value{font-family:'Lora',Georgia,serif;font-size:15px;color:var(--navy);font-weight:500;margin-bottom:12px;line-height:1.55;word-break:break-word}
+.cm-actions{display:flex;flex-wrap:wrap;gap:8px}
+.cm-action{display:inline-block;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;padding:9px 14px;border-radius:3px;cursor:pointer;text-decoration:none;font-weight:600;transition:all .15s ease;border:1px solid var(--gold);color:var(--gold);background:transparent;font-weight:600}
+.cm-action:hover{background:var(--gold);color:var(--navy)}
+.cm-action-primary{background:var(--gold);color:var(--navy)}
+.cm-action-primary:hover{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.cm-action-copied{background:var(--green);color:var(--cream);border-color:var(--green)}
+.cm-action-copied:hover{background:var(--green);color:var(--cream)}
+@media (max-width:480px){.cm-card{padding:28px 20px 22px}.cm-card h3{font-size:24px}.cm-action{flex:1 1 auto;text-align:center;min-width:90px}}
 </style>
 </head>
 <body>
@@ -242,7 +265,7 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   <h1>Own a Unit Where <em>Koen Invests</em></h1>
   <p class="hero-sub">Lake Shadroe Resort &amp; Marina is Cape Coral's first purpose-built condo-hotel. Koen Roelens is investing his own capital. Six Founder's residences starting at $925/SF — pre-launch pricing. Available exclusively to existing Roelens owners. Horizontal construction is nearly complete; we are transitioning to vertical construction.</p>
   <div style="text-align:center;margin-top:28px">
-    <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;text-decoration:none;margin:0 8px">Email Koen</a>
+    <button type="button" onclick="openContactKoen()" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;background:transparent;cursor:pointer;margin:0 8px">Contact Koen</button>
     <div class="cta-detail" style="text-align:center">koen@roelensvacations.com &nbsp;·&nbsp; (239) 673-5112</div>
   </div>
 </section>
@@ -439,7 +462,7 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
 <section style="background:var(--cream);padding:40px 20px;text-align:center">
   <div style="max-width:600px;margin:0 auto">
     <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:20px">Ready to discuss your options?</p>
-    <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);border:1px solid var(--navy);color:#FFFFFF;padding:14px 32px;text-decoration:none;margin:0 8px">Email Koen</a>
+    <button type="button" onclick="openContactKoen()" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);border:1px solid var(--navy);color:#FFFFFF;padding:14px 32px;cursor:pointer;margin:0 8px">Contact Koen</button>
     <div class="cta-detail" style="text-align:center">koen@roelensvacations.com &nbsp;·&nbsp; (239) 673-5112</div>
   </div>
 </section>
@@ -471,10 +494,93 @@ img[src="images/hero-pool-deck-sunset.jpg"]{margin-top:40px}
   <h2>This Is an Exclusive Offer to Roelens Vacations Investors</h2>
   <p>These six launch units and their priority pricing are available only to existing Roelens Vacations owners — the investors Koen trusts most. A $25K deposit — refundable until vertical construction begins — secures your preferred unit. Once these six are reserved, launch pricing is closed permanently.</p>
   <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
-    <a href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;text-decoration:none">Email Koen</a>
+    <button type="button" onclick="openContactKoen()" style="display:inline-block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:14px 32px;background:transparent;cursor:pointer">Contact Koen</button>
   </div>
   <div class="cta-detail" style="margin-top:20px">Koen Roelens · koen@roelensvacations.com · (239) 673-5112<br>Roelens Vacations · 1404 Del Prado Blvd S, Unit 110 · Cape Coral, FL 33990</div>
 </section>
 
 <footer class="footer">
-  <div class="footer-brand">Roelens Vacations &nbsp;·&nbsp
+  <div class="footer-brand">Roelens Vacations &nbsp;·&nbsp;</div>
+</footer>
+
+<!-- Contact Koen Modal -->
+<div id="contact-koen-modal" class="cm-overlay" aria-hidden="true" role="presentation" onclick="closeContactKoen()">
+  <div class="cm-card" role="dialog" aria-modal="true" aria-labelledby="cm-title" onclick="event.stopPropagation()">
+    <button type="button" class="cm-close" aria-label="Close" onclick="closeContactKoen()">&times;</button>
+    <div class="cm-header">
+      <div class="cm-eyebrow">Lake Shadroe Founder&rsquo;s Release</div>
+      <h3 id="cm-title">Contact Koen</h3>
+      <div class="cm-subhead">Roelens Vacations</div>
+    </div>
+    <div class="cm-section">
+      <div class="cm-label">Email</div>
+      <div class="cm-value">koen@roelensvacations.com</div>
+      <div class="cm-actions">
+        <button type="button" class="cm-action" data-copy="koen@roelensvacations.com" onclick="cmCopy(this)">Copy</button>
+        <a class="cm-action cm-action-primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=koen@roelensvacations.com&amp;su=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry" target="_blank" rel="noopener">Open in Gmail</a>
+        <a class="cm-action" href="mailto:koen@roelensvacations.com?subject=Lake%20Shadroe%20Founder%27s%20Release%20Inquiry">Open in Mail App</a>
+      </div>
+    </div>
+    <div class="cm-section">
+      <div class="cm-label">Phone</div>
+      <div class="cm-value">(239) 673-5112</div>
+      <div class="cm-actions">
+        <button type="button" class="cm-action" data-copy="(239) 673-5112" onclick="cmCopy(this)">Copy</button>
+        <a class="cm-action cm-action-primary" href="tel:+12396735112">Call</a>
+      </div>
+    </div>
+    <div class="cm-section">
+      <div class="cm-label">Office</div>
+      <div class="cm-value">Roelens Vacations<br>1404 Del Prado Blvd S, Unit 110<br>Cape Coral, FL 33990</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal = document.getElementById('contact-koen-modal');
+  window.openContactKoen = function(){
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeContactKoen = function(){
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  window.cmCopy = function(btn){
+    var text = btn.getAttribute('data-copy');
+    var done = function(){
+      var orig = btn.textContent;
+      btn.textContent = 'Copied';
+      btn.classList.add('cm-action-copied');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('cm-action-copied'); }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fb(text, done); });
+    } else {
+      fb(text, done);
+    }
+  };
+  function fb(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') {
+      window.closeContactKoen();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
