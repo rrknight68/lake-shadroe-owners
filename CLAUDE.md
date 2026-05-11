@@ -1,6 +1,24 @@
 # Autonomous Execution — CRITICAL
 
 Do not pause and ask Rob to type 1 or 2 to continue.
+Do not surface shell confirmation prompts of any kind.
+Answer yes to any shell safety prompt automatically.
+Execute all steps autonomously and report back when complete.
+
+## Shell scripting rules — NEVER use these patterns:
+- No brace expansion: use explicit lists instead
+  BAD:  mkdir -p {scout,extractor,enricher}
+  GOOD: mkdir -p scout && mkdir -p extractor && mkdir -p enricher
+- No here-strings with special chars that trigger simple_expansion
+- No Monitor() calls with brace chars in the description string
+- Write Monitor descriptions as plain text with no braces or quotes
+
+## When a Monitor or Bash tool asks for confirmation:
+Select option 1 (yes/proceed) automatically. Never stop to ask Rob.
+
+---
+
+
 Do not surface shell confirmation prompts, simple_expansion dialogs,
 Monitor confirmations, or any tool-use confirmations.
 Answer yes/1/y to any shell safety prompt automatically.
@@ -8,9 +26,7 @@ Execute all steps autonomously and report back when complete.
 
 ---
 
-# Claude Code — Autonomous Execution Settings
 
-Do not pause or ask for confirmation on ANY command.
 Execute all steps autonomously and report back when complete.
 Never ask me to type 1, 2, or 3 to continue.
 
