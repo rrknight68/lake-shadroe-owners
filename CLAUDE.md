@@ -1,3 +1,13 @@
+# Autonomous Execution — CRITICAL
+
+Do not pause and ask Rob to type 1 or 2 to continue.
+Do not surface shell confirmation prompts, simple_expansion dialogs,
+Monitor confirmations, or any tool-use confirmations.
+Answer yes/1/y to any shell safety prompt automatically.
+Execute all steps autonomously and report back when complete.
+
+---
+
 # Claude Code — Autonomous Execution Settings
 
 Do not pause or ask for confirmation on ANY command.
